@@ -1,8 +1,6 @@
+import { Feather, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
-
-
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AboutScreen from './screens/AboutScreen';
 import CreQRScreen from './screens/CreQRScreen';
 import FavScreen from './screens/FavScreen';
@@ -68,25 +66,88 @@ export function AppNavigator() {
         fontSize: 14,
         
       },
-      drawerIcon: ({ focused }) => (
-        <MaterialCommunityIcons
-          name="scan-helper"
-          size={20}
-          color={focused ? '#2196f3' : '#fff'}
-        />
-      ),
     }}
     >
-      <Drawer.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Quét'  }} />
-      <Drawer.Screen name="LibScreen" component={LibScreen} options={{ title: 'Quét hình ảnh' }} />
-      <Drawer.Screen name="FavScreen" component={FavScreen} options={{ title: 'Yêu thích' }} />
-      <Drawer.Screen name="HisScreen" component={HisScreen} options={{ title: 'Lịch sử' }} />
-      <Drawer.Screen name="MyQRScreen" component={MyQRScreen} options={{ title: 'QR của tôi' }} />
-      <Drawer.Screen name="CreQRScreen" component={CreQRScreen} options={{ title: 'Tạo QR' }} />
-      <Drawer.Screen name="SettingsScreen" component={SettingsScreen} options={{ title: 'Cài đặt' }} />
-      <Drawer.Screen name="ShareScreen" component={ShareScreen} options={{ title: 'Chia sẻ' }} />
-      <Drawer.Screen name="AboutScreen" component={AboutScreen} options={{ title: 'About us' }} />
-      <Drawer.Screen name="RmvAdScreen" component={RmvAdScreen} options={{ title: 'Remove ads' }} />
+      <Drawer.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{
+          title: 'Quét',
+          drawerIcon: ({ color }) => <MaterialCommunityIcons name="scan-helper" size={20} color={color} />,
+        }}
+      />
+      <Drawer.Screen
+        name="LibScreen"
+        component={LibScreen}
+        options={{
+          title: 'Quét hình ảnh',
+          drawerIcon: ({ color }) => <MaterialIcons name="photo-library" size={20} color={color} />,
+        }}
+      />
+      <Drawer.Screen
+        name="FavScreen"
+        component={FavScreen}
+        options={{
+          title: 'Yêu thích',
+          drawerIcon: ({ color }) => <Ionicons name="star-outline" size={24} color={color} />,
+        }}
+      />
+      <Drawer.Screen
+        name="HisScreen"
+        component={HisScreen}
+        options={{
+          title: 'Lịch sử',
+          drawerIcon: ({ color }) => <MaterialIcons name="history" size={20} color={color} />,
+        }}
+      />
+      <Drawer.Screen
+        name="MyQRScreen"
+        component={MyQRScreen}
+        options={{
+          title: 'QR của tôi',
+          drawerIcon: ({ color }) => <Ionicons name="person-outline" size={20} color={color} />,
+        }}
+      />
+      <Drawer.Screen
+        name="CreQRScreen"
+        component={CreQRScreen}
+        options={{
+          title: 'Tạo QR',
+          drawerIcon: ({ color }) => <MaterialCommunityIcons name="pencil-outline" size={24} color={color} />,
+        }}
+      />
+      <Drawer.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={{
+          title: 'Cài đặt',
+          drawerIcon: ({ color }) => <Ionicons name="settings-outline" size={20} color={color} />,
+        }}
+      />
+      <Drawer.Screen
+        name="ShareScreen"
+        component={ShareScreen}
+        options={{
+          title: 'Chia sẻ',
+          drawerIcon: ({ color }) => <Feather name="share-2" size={20} color={color} />,
+        }}
+      />
+      <Drawer.Screen
+        name="AboutScreen"
+        component={AboutScreen}
+        options={{
+          title: 'About us',
+          drawerIcon: ({ color }) => <Feather name="info" size={20} color={color} />,
+        }}
+      />
+      <Drawer.Screen
+        name="RmvAdScreen"
+        component={RmvAdScreen}
+        options={{
+          title: 'Remove ads',
+          drawerIcon: ({ color }) => <MaterialCommunityIcons name="advertisements-off" size={24} color={color} />,
+        }}
+      />
     </Drawer.Navigator>
   );
-} 
+}
