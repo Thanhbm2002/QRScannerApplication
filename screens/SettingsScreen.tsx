@@ -141,13 +141,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   colorBox: {
-    flex:1,
-    width: 53,
-    height: 53,
+    width: 54,
+    height: 54,
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-
   },
   settingItem: {
     flexDirection: 'row',
