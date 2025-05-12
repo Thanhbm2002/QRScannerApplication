@@ -1,14 +1,13 @@
 import { Feather, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
-import AboutScreen from './screens/AboutScreen';
+import { Linking } from 'react-native';
 import CreQRScreen from './screens/CreQRScreen';
 import FavScreen from './screens/FavScreen';
 import HisScreen from './screens/HisScreen';
 import HomeScreen from './screens/HomeScreens';
 import LibScreen from './screens/LibScreen';
 import MyQRScreen from './screens/MyQRScreen';
-import RmvAdScreen from './screens/RmvAdScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import ShareScreen from './screens/ShareScreen';
 
@@ -134,20 +133,41 @@ export function AppNavigator() {
       />
       <Drawer.Screen
         name="AboutScreen"
-        component={AboutScreen}
         options={{
-          title: 'About us',
-          drawerIcon: ({ color }) => <Feather name="info" size={20} color={color} />,
+          title: 'Ứng dụng của chúng tôi',
+          drawerIcon: ({ color }) => (
+            <Feather name="info" size={20} color={color} />
+          ),
         }}
-      />
+        listeners={{
+          drawerItemPress: (e) => {
+            e.preventDefault(); 
+            Linking.openURL('https://play.google.com/store/apps/dev?id=7739323866949324662&hl=vi&pli=1');
+          },
+        }}
+      >
+        {() => null}
+      </Drawer.Screen>
+
+      
+
       <Drawer.Screen
         name="RmvAdScreen"
-        component={RmvAdScreen}
         options={{
-          title: 'Remove ads',
-          drawerIcon: ({ color }) => <MaterialCommunityIcons name="advertisements-off" size={24} color={color} />,
+          title: 'Loại bỏ quảng cáo',
+          drawerIcon: ({ color }) => (
+            <MaterialCommunityIcons name="advertisements-off" size={24} color={color} />
+          ),
         }}
-      />
+        listeners={{
+          drawerItemPress: (e) => {
+            e.preventDefault(); 
+            Linking.openURL('https://play.google.com/store/apps/details?id=com.gamma.scan2&hl=vi');
+          },
+        }}
+      >
+        {() => null}
+      </Drawer.Screen>
     </Drawer.Navigator>
   );
 }
