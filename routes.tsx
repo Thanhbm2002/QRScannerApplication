@@ -49,7 +49,9 @@ export function AppNavigator() {
       drawerContentContainerStyle: {
         margin:0,
         padding:0,
-        width: '100%'
+        width: 900,
+        right: 20,
+        bottom:15,
       },
       drawerActiveBackgroundColor: '#333',
       drawerActiveTintColor: '#2196f3',
@@ -73,7 +75,8 @@ export function AppNavigator() {
           color={focused ? '#2196f3' : '#fff'}
         />
       ),
-    }}>
+    }}
+    >
       <Drawer.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Quét'  }} />
       <Drawer.Screen name="LibScreen" component={LibScreen} options={{ title: 'Quét hình ảnh' }} />
       <Drawer.Screen name="FavScreen" component={FavScreen} options={{ title: 'Yêu thích' }} />

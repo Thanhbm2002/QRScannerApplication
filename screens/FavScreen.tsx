@@ -1,14 +1,17 @@
+import ModalMenu from '@/components/modal';
 import { Entypo, Ionicons } from '@expo/vector-icons';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function FavScreen() {
   const navigation = useNavigation();
-  const data = Array.from({ length: 4 }, (_, i) => ({
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const data = Array.from({ length: 5 }, (_, i) => ({
     id: i.toString(),
     title: `Mục yêu thích ${i + 1}`,
-    subtitle: 'https://example.com',
+    subtitle: `https://muc${i + 1}.com`,
   }));
 
   return (
@@ -19,17 +22,19 @@ export default function FavScreen() {
           style={styles.menuButton}
           onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
         >
-          <Ionicons name="menu" size={28} color="#fff" />
+          <Ionicons name="menu-sharp" size={26} color="#fff" />
         </TouchableOpacity>
 
         <Text style={styles.title}>Yêu thích</Text>
 
-        <TouchableOpacity style={styles.rightIcons} onPress={() => navigation.navigate('LibScreen')}>
+        <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.menuButtonRight}>
           <Entypo name="dots-three-vertical" size={20} color="#fff" />
         </TouchableOpacity>
       </View>
 
-      {/* Danh sách */}
+      <ModalMenu visible={modalVisible} onClose={() => setModalVisible(false)} />
+
+      {/* List */}
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
@@ -49,7 +54,6 @@ export default function FavScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#111' },
-
   header: {
     position: 'absolute',
     top: 0,
@@ -66,7 +70,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 16,
   },
-  rightIcons: {
+  menuButtonRight: {
     position: 'absolute',
     right: 16,
   },
@@ -74,23 +78,18 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
-    alignSelf: 'center',
   },
-
   item: {
     flexDirection: 'row',
-    alignItems: 'center',
     paddingVertical: 12,
     paddingHorizontal: 16,
-    borderWidth: 1,
     borderRadius: 10,
-    backgroundColor: "#000",
-    marginVertical:3,
-    marginHorizontal:5,
+    backgroundColor: '#000',
+    marginVertical: 3,
+    marginHorizontal: 5,
   },
   textContainer: {
-    flex: 1,
-    left: 30,
+    marginLeft: 10,
   },
   itemTitle: {
     color: '#fff',

@@ -1,18 +1,21 @@
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
+import React, { Component } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppNavigator } from './routes';
+0
 
 
-const Drawer = createDrawerNavigator();
 
-export default function App() {
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-    <NavigationContainer>
-      <AppNavigator/>
-    </NavigationContainer>
-    </SafeAreaView>
-  );
+
+export default class App extends Component {
+  render(){
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <AppNavigator/>
+      </NavigationContainer>
+      </SafeAreaView>
+    );
+  }
+  
 }
